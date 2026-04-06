@@ -107,7 +107,9 @@ uninstall_service() {
     echo -e "${GREEN}The uninstallation of '$1' is complete.${NC}"
 }
 
-# --- LÓGICA DE ARGUMENTOS ---
+###############
+## ARGS LOGIC #
+###############
 
 if [ -z "$1" ]; then
     echo -e "${BLUE}TAMP Manager - Terminal Apache, MySQL and PHP${NC}"
