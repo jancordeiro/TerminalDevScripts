@@ -70,7 +70,7 @@ active_service() {
             sudo systemctl start "php$(get_php_version)-fpm" 2>/dev/null
             ;;
     esac
-    echo -e "${GREEN}Serviço(s) '$1' ativado(s).${NC}"
+    echo -e "${GREEN}Service(s) '$1' actived.${NC}"
 }
 
 disable_service() {
@@ -83,14 +83,14 @@ disable_service() {
             sudo systemctl stop "php$(get_php_version)-fpm" 2>/dev/null
             ;;
     esac
-    echo -e "${YELLOW}Serviço(s) '$1' encerrado(s).${NC}"
+    echo -e "${YELLOW}Service(s) '$1' ended.${NC}"
 }
 
 uninstall_service() {
-    echo -e "${RED}CUIDADO: Isso removerá pacotes e configurações de: $1${NC}"
-    read -p "Confirmar desinstalação? (s/n): " confirm
-    if [[ "$confirm" != "s" && "$confirm" != "S" ]]; then
-        echo -e "${BLUE}Operação cancelada.${NC}"
+    echo -e "${RED}ATENTION: This will be remove packages and configs of: $1${NC}"
+    read -p "Confirm uninstall? (y/n): " confirm
+    if [[ "$confirm" != "y" && "$confirm" != "Y" ]]; then
+        echo -e "${BLUE}Ended operation.${NC}"
         return
     fi
 
@@ -104,32 +104,32 @@ uninstall_service() {
             sudo apt-get autoremove -y
             ;;
     esac
-    echo -e "${GREEN}Desinstalação de '$1' concluída.${NC}"
+    echo -e "${GREEN}The uninstallation of '$1' is complete.${NC}"
 }
 
 # --- LÓGICA DE ARGUMENTOS ---
 
 if [ -z "$1" ]; then
     echo -e "${BLUE}TAMP Manager - Terminal Apache, MySQL and PHP${NC}"
-    echo "  tamp -i | --install [item]   Instala (all, apache, mysql, php)"
-    echo "  tamp -c | --check            Verifica Status"
-    echo "  tamp -a | --active [item]    Ativa (all, apache, mysql, php)"
-    echo "  tamp -d | --disable [item]   Desativa (all, apache, mysql, php)"
-    echo "  tamp -u | --uninstall [item] Remove (all, apache, mysql, php)"
+    echo "  tamp -i | --install [item]   Install (all, apache, mysql, php)"
+    echo "  tamp -c | --check            Check Status"
+    echo "  tamp -a | --active [item]    Active (all, apache, mysql, php)"
+    echo "  tamp -d | --disable [item]   Disable (all, apache, mysql, php)"
+    echo "  tamp -u | --uninstall [item] Uninstall (all, apache, mysql, php)"
     exit 0
 fi
 
 case $1 in
     "-i"|"--install")
-        if [ -z "$2" ]; then echo -e "${RED}Especifique o item.${NC}"; else install_service "$2"; fi ;;
+        if [ -z "$2" ]; then echo -e "${RED}Specify the item.${NC}"; else install_service "$2"; fi ;;
     "-c"|"--check")
         check_status ;;
     "-a"|"--active")
-        if [ -z "$2" ]; then echo -e "${RED}Especifique o item.${NC}"; else active_service "$2"; fi ;;
+        if [ -z "$2" ]; then echo -e "${RED}Specify the item.${NC}"; else active_service "$2"; fi ;;
     "-d"|"--disable")
-        if [ -z "$2" ]; then echo -e "${RED}Especifique o item.${NC}"; else disable_service "$2"; fi ;;
+        if [ -z "$2" ]; then echo -e "${RED}Specify the item.${NC}"; else disable_service "$2"; fi ;;
     "-u"|"--uninstall")
-        if [ -z "$2" ]; then echo -e "${RED}Especifique o item.${NC}"; else uninstall_service "$2"; fi ;;
+        if [ -z "$2" ]; then echo -e "${RED}Specify the item.${NC}"; else uninstall_service "$2"; fi ;;
     *)
-        echo -e "${RED}Comando inválido. Use 'tamp' para ajuda.${NC}" ;;
+        echo -e "${RED}Invalid Command. Use 'tamp' for help.${NC}" ;;
 esac
