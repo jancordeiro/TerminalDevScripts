@@ -10,6 +10,7 @@ NC='\033[0m'
 #############################
 ## Get PHP Version Function #
 #############################
+
 get_php_version() {
     php -v | head -n 1 | cut -d " " -f 2 | cut -c 1-3 2>/dev/null
 }
