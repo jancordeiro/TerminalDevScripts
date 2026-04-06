@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+########################################
+## Tamp - Terminal Apache, MySQL & PHP #
+## Author: Jan Cordeiro                #
+########################################
+
+###############
+## Color Vars #
+###############
+
 GREEN='\033[0;32m'
 RED='\033[0;31m'
 BLUE='\033[0;34m'
@@ -15,14 +24,14 @@ get_php_version() {
     php -v | head -n 1 | cut -d " " -f 2 | cut -c 1-3 2>/dev/null
 }
 
-#########################
-## MAIN FUNCTIONS #######
-#########################
-# (-c)     Check Status
-# (-i)     Install
-# (-a/-d)  Active/Disable
-# (-u)     Uninstall
-#########################
+###########################
+## MAIN FUNCTIONS #########
+###########################
+# (-c)     Check Status   #
+# (-i)     Install        #
+# (-a/-d)  Active/Disable #
+# (-u)     Uninstall      #
+###########################
 
 check_status() {
     echo -e "${BLUE}--- TAMP STACK STATUS ---${NC}"
