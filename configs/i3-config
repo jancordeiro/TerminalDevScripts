@@ -1,1 +1,50 @@
-# My custom i3 configs
+# ==========================================
+# PERSONALIZAÇÃO DO i3bar
+# ==========================================
+bar {
+        status_command i3status
+        position bottom
+        
+	    colors {
+	        # Fundo da barra em roxo ultra escuro e texto em verde neon
+	        background #0d0114
+	        statusline #39ff14
+	        separator  #bd93f9
+
+	        # Cores dos Workspaces:            Borda    Fundo    Texto
+	        # Workspace ativo (Verde Neon)
+	        focused_workspace                 #39ff14  #39ff14  #0d0114
+	        # Workspace visível/outro monitor
+	        active_workspace                  #9d4edd  #9d4edd  #ffffff
+	        # Workspaces em segundo plano
+	        inactive_workspace                #1b002a  #1b002a  #bd93f9
+	        # Workspace com alerta/notificação
+	        urgent_workspace                  #ff007f  #ff007f  #ffffff
+	    }
+}
+
+# ==========================================
+# CONFIGURAÇÃO DE BORDAS E CORES DAS JANELAS
+# ==========================================
+
+# 1. Espessura das bordas
+default_border pixel 3
+default_floating_border pixel 3
+
+# 2. Esquema de cores Cyberpunk para as janelas
+# Classe                  Borda    Fundo    Texto    Indicador Janela_Filho
+client.focused            #39ff14  #1b002a  #39ff14  #9d4edd   #39ff14
+client.focused_inactive   #1b002a  #0d0114  #bd93f9  #1b002a   #1b002a
+client.unfocused          #0d0114  #0d0114  #7a5299  #0d0114   #0d0114
+client.urgent             #ff007f  #ff007f  #ffffff  #ff007f   #ff007f
+
+
+# ==========================================
+# Setar wallpapper randômico ao inciar i3
+# ==========================================
+exec --no-startup-id feh --bg-fill --randomize ~/Imagens/wallpappers/*
+
+# ==========================================
+# Atalho pra troca de wallpapper rapido
+# ==========================================
+bindsym $mod+Ctrl+w exec --no-startup-id feh --bg-fill --randomize ~/Imagens/wallpappers/*
