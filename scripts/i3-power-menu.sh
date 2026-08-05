@@ -10,14 +10,14 @@ SEL_FG="#1a0033"    # Roxo escuro (Texto selecionado)
 FONT="monospace-11"
 
 # Opções com Emojis pra ficar estilozão haha
-opcoes="🔒 Lock\n🔄 Reboot\n🛑 Shutdown\n🚪 Logout"
+opcoes="🔒 Lock\n⟳ Reboot\n⏻ Shutdown\n↪ Logout"
 
 # Executa o dmenu e captura a escolha
-escolha=$(echo -e "$opcoes" | dmenu -fn "$FONT" -nb "$BG" -nf "$FG" -sb "$SEL_BG" -sf "$SEL_FG" -p "Sistema:" -i -l 4)
+escolha=$(echo -e "$opcoes" | dmenu -fn "$FONT" -nb "$BG" -nf "$FG" -sb "$SEL_BG" -sf "$SEL_FG" -p "Power:" -i -l 4)
 
 # Laço para executar a ação conforme escolha
 case "$escolha" in
-    *Lock) i3lock ;;
+    *Lock) i3lock -i /home/jancordeiro/Imagens/cyberpunk-i3.png ;;
     *Reboot) desktop-session -r ;;   # Comando nativo do antiX para reiniciar
     *Shutdown) desktop-session -s ;; # Comando nativo do antiX para desligar
     *Logout) i3-msg exit ;;
