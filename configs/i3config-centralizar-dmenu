@@ -1,0 +1,9 @@
+# Abre o dmenu em uma linha vertical simulando um menu central
+# O parâmetro -l 10 transforma o dmenu em uma lista vertical (em vez de uma linha horizontal no topo)
+
+bindsym $mod+d exec --no-startup-id dmenu_run -fn 'Monospace-12' -nb '#222222' -nf '#bbbbbb' -sb '#005577' -sf '#eeeeee' -l 10
+
+# Para fazê-lo aparecer no meio da tela como uma janela, adicione esta regra flutuante no final do mesmo arquivo do i3:
+# Força o menu a flutuar no centro (ajuste a geometria se necessário)
+
+for_window [title="dmenu"] floating enable, resize set 600 px 400 px, move position center
